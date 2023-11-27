@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>SimpleSearchableSelect</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css"/>
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+</head>
+<body class="uk-background-muted">
+<nav class="uk-navbar-container">
+	<div class="uk-container">
+		<div uk-navbar>
+			<div class="uk-navbar-left">
+
+				<a class="uk-navbar-item uk-logo" href="#" aria-label="Back to Home">SimpleSearchableSelect - UiKit Demo</a>
+
+				<ul class="uk-navbar-nav">
+					<li>
+
+						<a href="https://github.com/chalda-pnuzig/SimpleSearchableSelect" title="chalda-pnuzig/SimpleSearchableSelect">
+							<svg class="icon" viewBox="0 0 16 16" width="32" height="32">
+								<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+							</svg>
+						</a>
+					</li>
+					<li>
+
+						<a title="chalda.it" href="https://chalda.it">
+							<svg width="36" height="36" version="1.1" viewBox="0 0 197.14 197.14" xmlns="http://www.w3.org/2000/svg">
+								<circle transform="rotate(1.9244)" cx="36.894" cy="84.628" r="3.7881" fill="#00ff6a"/>
+								<g>
+									<path d="m184.01 150.22c0.00184-0.05487-0.09766-0.10518-0.22112-0.11171-8.3418-11.826-18.577-27.688-27.492-38.304-21.027 20.055-54.852 25.211-76.842 18.643-14.579 0.79949-27.137 2.4994-41.905 3.86 4.7787-6.2625 10.789-12.062 14.891-16.406-8.4002-5.794-19.444-13.675-26.8-19.883-5.5893-4.7413-14.144-12.555-14.141-12.916 12.06-5.9204 25.853-12.51 37.669-16.223 8.7476-2.5968 16.008-3.8511 24.529-4.238 6.824 0.20402 13.146 0.38248 18.986 1.5752 8.0855-4.708 14.888-9.3832 23.129-13.934 0.1319 0.00443 0.32935-0.03606 0.4388-0.08999 0.14991-0.0739 0.23421-0.06037 0.34185 0.05481-0.39109 7.7019-1.001 11.949-1.8514 21.745 15.554 10.127 30.311 21.515 41.688 34.363l0.27218-0.23457c12.952-13.659 23.52-28.79 31.347-40.693 1.5136-2.31 1.3994-2.2185 2.3519-1.8826 0.77162 0.27205 0.7958 0.38523 0.57618 2.697-1.6525 21.662-3.602 43.395-4.969 61.001-1.6049 20.719-1.6392 21.091-1.944 21.081-0.03138-0.00105-0.05556-0.04679-0.05371-0.10176zm-148.05-58.799c1.944-0.38984 3.6695-1.9362 4.2958-3.8497 0.87173-2.6635-0.8729-5.7756-3.7697-6.7243-1.6224-0.53136-3.6688-0.01995-5.0812 1.2698-1.289 1.1772-1.985 2.9565-1.7732 4.5334 0.2907 2.1644 1.9857 4.1022 4.1026 4.6903 0.77009 0.21395 1.4392 0.23812 2.2256 0.08078z" fill="#d200fc"/>
+									<path d="m102.6 122.77c-10.299-2.4956-16.94-13.299-14.332-23.314 1.2453-4.781 4.876-9.5433 9.1322-11.978 2.3724-1.3573 7.0264-2.652 9.5048-2.644 11.52 0.03707 21.038 11.511 18.736 22.588-2.2407 10.786-12.811 17.827-23.042 15.348z" fill="#00ff6a"/>
+									<path d="m63.332 104.49c-2.5885-0.71016-4.0247-1.6282-6.021-3.8486-6.4395-7.1623-1.5943-18.559 8.185-19.252 4.5822-0.32481 9.0724 2.3942 11.239 6.8055 1.3951 2.8408 1.4446 7.0234 0.11502 9.7253-2.5229 5.1269-8.3874 7.977-13.518 6.5695z" color="#000000" color-rendering="auto" fill="#00ff6a"/>
+								</g>
+							</svg>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<div class="uk-container demo">
+
+	<div class="uk-card uk-card-default">
+		<div class="uk-card-header"><h3 class="uk-card-title">Default configuration</h3></div>
+		<div class="uk-card-body">
+			<div class="uk-grid uk-child-width-1-2@s">
+				<form action="#" onsubmit="return false">
+					<label class="uk-form-label" for="native1">Native:</label>
+					<!-- @formatter:off-->
+					<select class="uk-select" id="native1" name="constellation" required><option value="">Select a constellation...</option><option value="And">Andromeda [And]</option><option value="Ant">Antlia [Ant]</option><option value="Aps">Apus [Aps]</option><option value="Aqr">Aquarius [Aqr]</option><option value="Aql">Aquila [Aql]</option><option value="Ara">Ara [Ara]</option><option value="Ari">Aries [Ari]</option><option value="Aur">Auriga [Aur]</option><option value="Boo">Bootes [Boo]</option><option value="Cae">Caelum [Cae]</option><option value="Cam">Camelopardalis [Cam]</option><option value="Cnc">Cancer [Cnc]</option><option value="CVn">Canes Venatici [CVn]</option><option value="CMa">Canis Major [CMa]</option><option value="CMi">Canis Minor [CMi]</option><option value="Cap">Capricornus [Cap]</option><option value="Car">Carina [Car]</option><option value="Cas">Cassiopeia [Cas]</option><option value="Cen">Centaurus [Cen]</option><option value="Cep">Cepheus [Cep]</option><option value="Cet">Cetus [Cet]</option><option value="Cha">Chamaeleon [Cha]</option><option value="Cir">Circinus [Cir]</option><option value="Col">Columba [Col]</option><option value="Com">Coma Berenices [Com]</option><option value="CrA">Corona Australis [CrA]</option><option value="CrB">Corona Borealis [CrB]</option><option value="Crv">Corvus [Crv]</option><option value="Crt">Crater [Crt]</option><option value="Cru">Crux [Cru]</option><option value="Cyg">Cygnus [Cyg]</option><option value="Del">Delphinus [Del]</option><option value="Dor">Dorado [Dor]</option><option value="Dra">Draco [Dra]</option><option value="Equ">Equuleus [Equ]</option><option value="Eri">Eridanus [Eri]</option><option value="For">Fornax [For]</option><option value="Gem">Gemini [Gem]</option><option value="Gru">Grus [Gru]</option><option value="Her">Hercules [Her]</option><option value="Hor">Horologium [Hor]</option><option value="Hya">Hydra [Hya]</option><option value="Hyi">Hydrus [Hyi]</option><option value="Ind">Indus [Ind]</option><option value="Lac">Lacerta [Lac]</option><option value="Leo">Leo [Leo]</option><option value="LMi">Leo Minor [LMi]</option><option value="Lep">Lepus [Lep]</option><option value="Lib">Libra [Lib]</option><option value="Lup">Lupus [Lup]</option><option value="Lyn">Lynx [Lyn]</option><option value="Lyr">Lyra [Lyr]</option><option value="Men">Mensa [Men]</option><option value="Mic">Microscopium [Mic]</option><option value="Mon">Monoceros [Mon]</option><option value="Mus">Musca [Mus]</option><option value="Nor">Norma [Nor]</option><option value="Oct">Octans [Oct]</option><option value="Oph">Ophiuchus [Oph]</option><option value="Ori">Orion [Ori]</option><option value="Pav">Pavo [Pav]</option><option value="Peg">Pegasus [Peg]</option><option value="Per">Perseus [Per]</option><option value="Phe">Phoenix [Phe]</option><option value="Pic">Pictor [Pic]</option><option value="Psc">Pisces [Psc]</option><option value="PsA">Piscis Austrinus [PsA]</option><option value="Pup">Puppis [Pup]</option><option value="Pyx">Pyxis [Pyx]</option><option value="Ret">Reticulum [Ret]</option><option value="Sge">Sagitta [Sge]</option><option value="Sgr">Sagittarius [Sgr]</option><option value="Sco">Scorpius [Sco]</option><option value="Scl">Sculptor [Scl]</option><option value="Sct">Scutum [Sct]</option><option value="Ser">Serpens [Ser]</option><option value="Sex">Sextans [Sex]</option><option value="Tau">Taurus [Tau]</option><option value="Tel">Telescopium [Tel]</option><option value="Tri">Triangulum [Tri]</option><option value="TrA">Triangulum Australe [TrA]</option><option value="Tuc">Tucana [Tuc]</option><option value="UMa">Ursa Major [UMa]</option><option value="UMi">Ursa Minor [UMi]</option><option value="Vel">Vela [Vel]</option><option value="Vir">Virgo [Vir]</option><option value="Vol">Volans [Vol]</option><option value="Vul">Vulpecula [Vul]</option></select>
+					<!-- @formatter:on-->
+					<button type="submit" class="uk-button uk-button-primary uk-margin-top">Submit</button>
+				</form>
+
+				<form action="#" onsubmit="return false">
+					<label class="uk-form-label" for="select1">SimpleSearchableSelect:</label>
+					<!-- @formatter:off-->
+					<select class="uk-select" id="select1" name="constellation" required><option value="">Select a constellation...</option><option value="And">Andromeda [And]</option><option value="Ant">Antlia [Ant]</option><option value="Aps">Apus [Aps]</option><option value="Aqr">Aquarius [Aqr]</option><option value="Aql">Aquila [Aql]</option><option value="Ara">Ara [Ara]</option><option value="Ari">Aries [Ari]</option><option value="Aur">Auriga [Aur]</option><option value="Boo">Bootes [Boo]</option><option value="Cae">Caelum [Cae]</option><option value="Cam">Camelopardalis [Cam]</option><option value="Cnc">Cancer [Cnc]</option><option value="CVn">Canes Venatici [CVn]</option><option value="CMa">Canis Major [CMa]</option><option value="CMi">Canis Minor [CMi]</option><option value="Cap">Capricornus [Cap]</option><option value="Car">Carina [Car]</option><option value="Cas">Cassiopeia [Cas]</option><option value="Cen">Centaurus [Cen]</option><option value="Cep">Cepheus [Cep]</option><option value="Cet">Cetus [Cet]</option><option value="Cha">Chamaeleon [Cha]</option><option value="Cir">Circinus [Cir]</option><option value="Col">Columba [Col]</option><option value="Com">Coma Berenices [Com]</option><option value="CrA">Corona Australis [CrA]</option><option value="CrB">Corona Borealis [CrB]</option><option value="Crv">Corvus [Crv]</option><option value="Crt">Crater [Crt]</option><option value="Cru">Crux [Cru]</option><option value="Cyg">Cygnus [Cyg]</option><option value="Del">Delphinus [Del]</option><option value="Dor">Dorado [Dor]</option><option value="Dra">Draco [Dra]</option><option value="Equ">Equuleus [Equ]</option><option value="Eri">Eridanus [Eri]</option><option value="For">Fornax [For]</option><option value="Gem">Gemini [Gem]</option><option value="Gru">Grus [Gru]</option><option value="Her">Hercules [Her]</option><option value="Hor">Horologium [Hor]</option><option value="Hya">Hydra [Hya]</option><option value="Hyi">Hydrus [Hyi]</option><option value="Ind">Indus [Ind]</option><option value="Lac">Lacerta [Lac]</option><option value="Leo">Leo [Leo]</option><option value="LMi">Leo Minor [LMi]</option><option value="Lep">Lepus [Lep]</option><option value="Lib">Libra [Lib]</option><option value="Lup">Lupus [Lup]</option><option value="Lyn">Lynx [Lyn]</option><option value="Lyr">Lyra [Lyr]</option><option value="Men">Mensa [Men]</option><option value="Mic">Microscopium [Mic]</option><option value="Mon">Monoceros [Mon]</option><option value="Mus">Musca [Mus]</option><option value="Nor">Norma [Nor]</option><option value="Oct">Octans [Oct]</option><option value="Oph">Ophiuchus [Oph]</option><option value="Ori">Orion [Ori]</option><option value="Pav">Pavo [Pav]</option><option value="Peg">Pegasus [Peg]</option><option value="Per">Perseus [Per]</option><option value="Phe">Phoenix [Phe]</option><option value="Pic">Pictor [Pic]</option><option value="Psc">Pisces [Psc]</option><option value="PsA">Piscis Austrinus [PsA]</option><option value="Pup">Puppis [Pup]</option><option value="Pyx">Pyxis [Pyx]</option><option value="Ret">Reticulum [Ret]</option><option value="Sge">Sagitta [Sge]</option><option value="Sgr">Sagittarius [Sgr]</option><option value="Sco">Scorpius [Sco]</option><option value="Scl">Sculptor [Scl]</option><option value="Sct">Scutum [Sct]</option><option value="Ser">Serpens [Ser]</option><option value="Sex">Sextans [Sex]</option><option value="Tau">Taurus [Tau]</option><option value="Tel">Telescopium [Tel]</option><option value="Tri">Triangulum [Tri]</option><option value="TrA">Triangulum Australe [TrA]</option><option value="Tuc">Tucana [Tuc]</option><option value="UMa">Ursa Major [UMa]</option><option value="UMi">Ursa Minor [UMi]</option><option value="Vel">Vela [Vel]</option><option value="Vir">Virgo [Vir]</option><option value="Vol">Volans [Vol]</option><option value="Vul">Vulpecula [Vul]</option></select>
+					<!-- @formatter:on-->
+					<button type="submit" class="uk-button uk-button-primary uk-margin-top">Submit</button>
+				</form>
+			</div>
+		</div>
+		<script type="module">
+			import {SSS} from '../SimpleSearchableSelect.min.js'; // hide
+			new SSS(document.getElementById('select1'));
+		</script>
+	</div>
+
+	<hr class="uk-divider-icon">
+
+	<div class="uk-card uk-card-default">
+		<div class="uk-card-header"><h3 class="uk-card-title">Default configuration - multiple</h3></div>
+		<div class="uk-card-body">
+			<div class="uk-grid uk-child-width-1-2@s">
+				<div>
+					<form>
+						<label class="uk-form-label">Native:</label>
+						<!-- @formatter:off-->
+						<select class="uk-select" name="constellation" required multiple><option value="">Select a constellation...</option><option value="And">Andromeda [And]</option><option value="Ant">Antlia [Ant]</option><option value="Aps">Apus [Aps]</option><option value="Aqr">Aquarius [Aqr]</option><option value="Aql">Aquila [Aql]</option><option value="Ara">Ara [Ara]</option><option value="Ari">Aries [Ari]</option><option value="Aur">Auriga [Aur]</option><option value="Boo">Bootes [Boo]</option><option value="Cae">Caelum [Cae]</option><option value="Cam">Camelopardalis [Cam]</option><option value="Cnc">Cancer [Cnc]</option><option value="CVn">Canes Venatici [CVn]</option><option value="CMa">Canis Major [CMa]</option><option value="CMi">Canis Minor [CMi]</option><option value="Cap">Capricornus [Cap]</option><option value="Car">Carina [Car]</option><option value="Cas">Cassiopeia [Cas]</option><option value="Cen">Centaurus [Cen]</option><option value="Cep">Cepheus [Cep]</option><option value="Cet">Cetus [Cet]</option><option value="Cha">Chamaeleon [Cha]</option><option value="Cir">Circinus [Cir]</option><option value="Col">Columba [Col]</option><option value="Com">Coma Berenices [Com]</option><option value="CrA">Corona Australis [CrA]</option><option value="CrB">Corona Borealis [CrB]</option><option value="Crv">Corvus [Crv]</option><option value="Crt">Crater [Crt]</option><option value="Cru">Crux [Cru]</option><option value="Cyg">Cygnus [Cyg]</option><option value="Del">Delphinus [Del]</option><option value="Dor">Dorado [Dor]</option><option value="Dra">Draco [Dra]</option><option value="Equ">Equuleus [Equ]</option><option value="Eri">Eridanus [Eri]</option><option value="For">Fornax [For]</option><option value="Gem">Gemini [Gem]</option><option value="Gru">Grus [Gru]</option><option value="Her">Hercules [Her]</option><option value="Hor">Horologium [Hor]</option><option value="Hya">Hydra [Hya]</option><option value="Hyi">Hydrus [Hyi]</option><option value="Ind">Indus [Ind]</option><option value="Lac">Lacerta [Lac]</option><option value="Leo">Leo [Leo]</option><option value="LMi">Leo Minor [LMi]</option><option value="Lep">Lepus [Lep]</option><option value="Lib">Libra [Lib]</option><option value="Lup">Lupus [Lup]</option><option value="Lyn">Lynx [Lyn]</option><option value="Lyr">Lyra [Lyr]</option><option value="Men">Mensa [Men]</option><option value="Mic">Microscopium [Mic]</option><option value="Mon">Monoceros [Mon]</option><option value="Mus">Musca [Mus]</option><option value="Nor">Norma [Nor]</option><option value="Oct">Octans [Oct]</option><option value="Oph">Ophiuchus [Oph]</option><option value="Ori">Orion [Ori]</option><option value="Pav">Pavo [Pav]</option><option value="Peg">Pegasus [Peg]</option><option value="Per">Perseus [Per]</option><option value="Phe">Phoenix [Phe]</option><option value="Pic">Pictor [Pic]</option><option value="Psc">Pisces [Psc]</option><option value="PsA">Piscis Austrinus [PsA]</option><option value="Pup">Puppis [Pup]</option><option value="Pyx">Pyxis [Pyx]</option><option value="Ret">Reticulum [Ret]</option><option value="Sge">Sagitta [Sge]</option><option value="Sgr">Sagittarius [Sgr]</option><option value="Sco">Scorpius [Sco]</option><option value="Scl">Sculptor [Scl]</option><option value="Sct">Scutum [Sct]</option><option value="Ser">Serpens [Ser]</option><option value="Sex">Sextans [Sex]</option><option value="Tau">Taurus [Tau]</option><option value="Tel">Telescopium [Tel]</option><option value="Tri">Triangulum [Tri]</option><option value="TrA">Triangulum Australe [TrA]</option><option value="Tuc">Tucana [Tuc]</option><option value="UMa">Ursa Major [UMa]</option><option value="UMi">Ursa Minor [UMi]</option><option value="Vel">Vela [Vel]</option><option value="Vir">Virgo [Vir]</option><option value="Vol">Volans [Vol]</option><option value="Vul">Vulpecula [Vul]</option></select>
+						<!-- @formatter:on-->
+						<button type="submit" class="uk-button uk-button-primary uk-margin-top">Submit</button>
+					</form>
+				</div>
+				<div>
+					<form>
+						<label class="uk-form-label" for="select2">SimpleSearchableSelect:</label>
+						<!-- @formatter:off-->
+						<div class="input-group">
+							<select class="uk-input" style="min-width: 150px" id="select2" name="constellation" required multiple><option value="">Select a constellation...</option><option value="And">Andromeda [And]</option><option value="Ant">Antlia [Ant]</option><option value="Aps">Apus [Aps]</option><option value="Aqr">Aquarius [Aqr]</option><option value="Aql">Aquila [Aql]</option><option value="Ara">Ara [Ara]</option><option value="Ari">Aries [Ari]</option><option value="Aur">Auriga [Aur]</option><option value="Boo">Bootes [Boo]</option><option value="Cae">Caelum [Cae]</option><option value="Cam">Camelopardalis [Cam]</option><option value="Cnc">Cancer [Cnc]</option><option value="CVn">Canes Venatici [CVn]</option><option value="CMa">Canis Major [CMa]</option><option value="CMi">Canis Minor [CMi]</option><option value="Cap">Capricornus [Cap]</option><option value="Car">Carina [Car]</option><option value="Cas">Cassiopeia [Cas]</option><option value="Cen">Centaurus [Cen]</option><option value="Cep">Cepheus [Cep]</option><option value="Cet">Cetus [Cet]</option><option value="Cha">Chamaeleon [Cha]</option><option value="Cir">Circinus [Cir]</option><option value="Col">Columba [Col]</option><option value="Com">Coma Berenices [Com]</option><option value="CrA">Corona Australis [CrA]</option><option value="CrB">Corona Borealis [CrB]</option><option value="Crv">Corvus [Crv]</option><option value="Crt">Crater [Crt]</option><option value="Cru">Crux [Cru]</option><option value="Cyg">Cygnus [Cyg]</option><option value="Del">Delphinus [Del]</option><option value="Dor">Dorado [Dor]</option><option value="Dra">Draco [Dra]</option><option value="Equ">Equuleus [Equ]</option><option value="Eri">Eridanus [Eri]</option><option value="For">Fornax [For]</option><option value="Gem">Gemini [Gem]</option><option value="Gru">Grus [Gru]</option><option value="Her">Hercules [Her]</option><option value="Hor">Horologium [Hor]</option><option value="Hya">Hydra [Hya]</option><option value="Hyi">Hydrus [Hyi]</option><option value="Ind">Indus [Ind]</option><option value="Lac">Lacerta [Lac]</option><option value="Leo">Leo [Leo]</option><option value="LMi">Leo Minor [LMi]</option><option value="Lep">Lepus [Lep]</option><option value="Lib">Libra [Lib]</option><option value="Lup">Lupus [Lup]</option><option value="Lyn">Lynx [Lyn]</option><option value="Lyr">Lyra [Lyr]</option><option value="Men">Mensa [Men]</option><option value="Mic">Microscopium [Mic]</option><option value="Mon">Monoceros [Mon]</option><option value="Mus">Musca [Mus]</option><option value="Nor">Norma [Nor]</option><option value="Oct">Octans [Oct]</option><option value="Oph">Ophiuchus [Oph]</option><option value="Ori">Orion [Ori]</option><option value="Pav">Pavo [Pav]</option><option value="Peg">Pegasus [Peg]</option><option value="Per">Perseus [Per]</option><option value="Phe">Phoenix [Phe]</option><option value="Pic">Pictor [Pic]</option><option value="Psc">Pisces [Psc]</option><option value="PsA">Piscis Austrinus [PsA]</option><option value="Pup">Puppis [Pup]</option><option value="Pyx">Pyxis [Pyx]</option><option value="Ret">Reticulum [Ret]</option><option value="Sge">Sagitta [Sge]</option><option value="Sgr">Sagittarius [Sgr]</option><option value="Sco">Scorpius [Sco]</option><option value="Scl">Sculptor [Scl]</option><option value="Sct">Scutum [Sct]</option><option value="Ser">Serpens [Ser]</option><option value="Sex">Sextans [Sex]</option><option value="Tau">Taurus [Tau]</option><option value="Tel">Telescopium [Tel]</option><option value="Tri">Triangulum [Tri]</option><option value="TrA">Triangulum Australe [TrA]</option><option value="Tuc">Tucana [Tuc]</option><option value="UMa">Ursa Major [UMa]</option><option value="UMi">Ursa Minor [UMi]</option><option value="Vel">Vela [Vel]</option><option value="Vir">Virgo [Vir]</option><option value="Vol">Volans [Vol]</option><option value="Vul">Vulpecula [Vul]</option></select>
+						</div>
+						<!-- @formatter:on-->
+						<button type="submit" class="uk-button uk-button-primary uk-margin-top">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script type="module">
+			import {SSS} from '../SimpleSearchableSelect.min.js'; // hide
+			new SSS(document.getElementById('select2'));
+		</script>
+	</div>
+
+	<hr class="uk-divider-icon">
+
+	<div class="uk-card uk-card-default">
+		<div class="uk-card-header"><h3 class="uk-card-title">Methods</h3></div>
+		<div class="uk-card-body">
+			<div class="uk-grid uk-child-width-1-2@s">
+
+				<form>
+					<!-- @formatter:off-->
+				<label class="uk-form-label" for="select3">Single:</label>
+				<select class="uk-select" id="select3" name="constellation" required><option value="">Select a constellation...</option><option value="And">Andromeda [And]</option><option value="Ant">Antlia [Ant]</option><option value="Aps">Apus [Aps]</option><option value="Aqr">Aquarius [Aqr]</option><option value="Aql">Aquila [Aql]</option><option value="Ara">Ara [Ara]</option><option value="Ari">Aries [Ari]</option><option value="Aur">Auriga [Aur]</option><option value="Boo">Bootes [Boo]</option><option value="Cae">Caelum [Cae]</option><option value="Cam">Camelopardalis [Cam]</option><option value="Cnc">Cancer [Cnc]</option><option value="CVn">Canes Venatici [CVn]</option><option value="CMa">Canis Major [CMa]</option><option value="CMi">Canis Minor [CMi]</option><option value="Cap">Capricornus [Cap]</option><option value="Car">Carina [Car]</option><option value="Cas">Cassiopeia [Cas]</option><option value="Cen">Centaurus [Cen]</option><option value="Cep">Cepheus [Cep]</option><option value="Cet">Cetus [Cet]</option><option value="Cha">Chamaeleon [Cha]</option><option value="Cir">Circinus [Cir]</option><option value="Col">Columba [Col]</option><option value="Com">Coma Berenices [Com]</option><option value="CrA">Corona Australis [CrA]</option><option value="CrB">Corona Borealis [CrB]</option><option value="Crv">Corvus [Crv]</option><option value="Crt">Crater [Crt]</option><option value="Cru">Crux [Cru]</option><option value="Cyg">Cygnus [Cyg]</option><option value="Del">Delphinus [Del]</option><option value="Dor">Dorado [Dor]</option><option value="Dra">Draco [Dra]</option><option value="Equ">Equuleus [Equ]</option><option value="Eri">Eridanus [Eri]</option><option value="For">Fornax [For]</option><option value="Gem">Gemini [Gem]</option><option value="Gru">Grus [Gru]</option><option value="Her">Hercules [Her]</option><option value="Hor">Horologium [Hor]</option><option value="Hya">Hydra [Hya]</option><option value="Hyi">Hydrus [Hyi]</option><option value="Ind">Indus [Ind]</option><option value="Lac">Lacerta [Lac]</option><option value="Leo">Leo [Leo]</option><option value="LMi">Leo Minor [LMi]</option><option value="Lep">Lepus [Lep]</option><option value="Lib">Libra [Lib]</option><option value="Lup">Lupus [Lup]</option><option value="Lyn">Lynx [Lyn]</option><option value="Lyr">Lyra [Lyr]</option><option value="Men">Mensa [Men]</option><option value="Mic">Microscopium [Mic]</option><option value="Mon">Monoceros [Mon]</option><option value="Mus">Musca [Mus]</option><option value="Nor">Norma [Nor]</option><option value="Oct">Octans [Oct]</option><option value="Oph">Ophiuchus [Oph]</option><option value="Ori">Orion [Ori]</option><option value="Pav">Pavo [Pav]</option><option value="Peg">Pegasus [Peg]</option><option value="Per">Perseus [Per]</option><option value="Phe">Phoenix [Phe]</option><option value="Pic">Pictor [Pic]</option><option value="Psc">Pisces [Psc]</option><option value="PsA">Piscis Austrinus [PsA]</option><option value="Pup">Puppis [Pup]</option><option value="Pyx">Pyxis [Pyx]</option><option value="Ret">Reticulum [Ret]</option><option value="Sge">Sagitta [Sge]</option><option value="Sgr">Sagittarius [Sgr]</option><option value="Sco">Scorpius [Sco]</option><option value="Scl">Sculptor [Scl]</option><option value="Sct">Scutum [Sct]</option><option value="Ser">Serpens [Ser]</option><option value="Sex">Sextans [Sex]</option><option value="Tau">Taurus [Tau]</option><option value="Tel">Telescopium [Tel]</option><option value="Tri">Triangulum [Tri]</option><option value="TrA">Triangulum Australe [TrA]</option><option value="Tuc">Tucana [Tuc]</option><option value="UMa">Ursa Major [UMa]</option><option value="UMi">Ursa Minor [UMi]</option><option value="Vel">Vela [Vel]</option><option value="Vir">Virgo [Vir]</option><option value="Vol">Volans [Vol]</option><option value="Vul">Vulpecula [Vul]</option></select>
+				<br>
+				<label class="uk-form-label" for="select4">Multiple:</label>
+				<select class="uk-input" id="select4" name="constellation" required multiple><option value="">Select a constellation...</option><option value="And">Andromeda [And]</option><option value="Ant">Antlia [Ant]</option><option value="Aps">Apus [Aps]</option><option value="Aqr">Aquarius [Aqr]</option><option value="Aql">Aquila [Aql]</option><option value="Ara">Ara [Ara]</option><option value="Ari">Aries [Ari]</option><option value="Aur">Auriga [Aur]</option><option value="Boo">Bootes [Boo]</option><option value="Cae">Caelum [Cae]</option><option value="Cam">Camelopardalis [Cam]</option><option value="Cnc">Cancer [Cnc]</option><option value="CVn">Canes Venatici [CVn]</option><option value="CMa">Canis Major [CMa]</option><option value="CMi">Canis Minor [CMi]</option><option value="Cap">Capricornus [Cap]</option><option value="Car">Carina [Car]</option><option value="Cas">Cassiopeia [Cas]</option><option value="Cen">Centaurus [Cen]</option><option value="Cep">Cepheus [Cep]</option><option value="Cet">Cetus [Cet]</option><option value="Cha">Chamaeleon [Cha]</option><option value="Cir">Circinus [Cir]</option><option value="Col">Columba [Col]</option><option value="Com">Coma Berenices [Com]</option><option value="CrA">Corona Australis [CrA]</option><option value="CrB">Corona Borealis [CrB]</option><option value="Crv">Corvus [Crv]</option><option value="Crt">Crater [Crt]</option><option value="Cru">Crux [Cru]</option><option value="Cyg">Cygnus [Cyg]</option><option value="Del">Delphinus [Del]</option><option value="Dor">Dorado [Dor]</option><option value="Dra">Draco [Dra]</option><option value="Equ">Equuleus [Equ]</option><option value="Eri">Eridanus [Eri]</option><option value="For">Fornax [For]</option><option value="Gem">Gemini [Gem]</option><option value="Gru">Grus [Gru]</option><option value="Her">Hercules [Her]</option><option value="Hor">Horologium [Hor]</option><option value="Hya">Hydra [Hya]</option><option value="Hyi">Hydrus [Hyi]</option><option value="Ind">Indus [Ind]</option><option value="Lac">Lacerta [Lac]</option><option value="Leo">Leo [Leo]</option><option value="LMi">Leo Minor [LMi]</option><option value="Lep">Lepus [Lep]</option><option value="Lib">Libra [Lib]</option><option value="Lup">Lupus [Lup]</option><option value="Lyn">Lynx [Lyn]</option><option value="Lyr">Lyra [Lyr]</option><option value="Men">Mensa [Men]</option><option value="Mic">Microscopium [Mic]</option><option value="Mon">Monoceros [Mon]</option><option value="Mus">Musca [Mus]</option><option value="Nor">Norma [Nor]</option><option value="Oct">Octans [Oct]</option><option value="Oph">Ophiuchus [Oph]</option><option value="Ori">Orion [Ori]</option><option value="Pav">Pavo [Pav]</option><option value="Peg">Pegasus [Peg]</option><option value="Per">Perseus [Per]</option><option value="Phe">Phoenix [Phe]</option><option value="Pic">Pictor [Pic]</option><option value="Psc">Pisces [Psc]</option><option value="PsA">Piscis Austrinus [PsA]</option><option value="Pup">Puppis [Pup]</option><option value="Pyx">Pyxis [Pyx]</option><option value="Ret">Reticulum [Ret]</option><option value="Sge">Sagitta [Sge]</option><option value="Sgr">Sagittarius [Sgr]</option><option value="Sco">Scorpius [Sco]</option><option value="Scl">Sculptor [Scl]</option><option value="Sct">Scutum [Sct]</option><option value="Ser">Serpens [Ser]</option><option value="Sex">Sextans [Sex]</option><option value="Tau">Taurus [Tau]</option><option value="Tel">Telescopium [Tel]</option><option value="Tri">Triangulum [Tri]</option><option value="TrA">Triangulum Australe [TrA]</option><option value="Tuc">Tucana [Tuc]</option><option value="UMa">Ursa Major [UMa]</option><option value="UMi">Ursa Minor [UMi]</option><option value="Vel">Vela [Vel]</option><option value="Vir">Virgo [Vir]</option><option value="Vol">Volans [Vol]</option><option value="Vul">Vulpecula [Vul]</option></select>
+				<!-- @formatter:on-->
+				</form>
+				<form class="col buttons_methods">
+					<button class="uk-button uk-margin-small-bottom uk-button-primary uk-width-1-1" type="button" id="btn__getValues">getValues()</button>
+					<button class="uk-button uk-margin-small-bottom uk-button-success uk-width-1-1" type="button" id="btn__set1">setValue('And')</button>
+					<button class="uk-button uk-margin-small-bottom uk-button-success uk-width-1-1" type="button" id="btn__set2">setValue(['And','Lup','Leo','Crv'])</button>
+					<button class="uk-button uk-margin-small-bottom uk-button-warning uk-width-1-1" type="button" id="btn__clear1">clearValue()</button>
+					<button class="uk-button uk-margin-small-bottom uk-button-warning uk-width-1-1" type="button" id="btn__clear2">clearValue('Lup')</button>
+					<button class="uk-button uk-margin-small-bottom uk-button-warning uk-width-1-1" type="button" id="btn__clear3">clearValue(['Lup','Crv'])</button>
+					<button class="uk-button uk-margin-small-bottom uk-button-danger uk-width-1-1" type="button" id="btn__destroy">destroy()</button>
+					<button class="uk-button uk-margin-small-bottom uk-button-primary uk-width-1-1" disabled type="button" id="btn__restart">reinitializing</button>
+				</form>
+			</div>
+		</div>
+		<script type="module">
+			import {SSS} from '../SimpleSearchableSelect.min.js'; // hide
+			let btnGetValues   = document.getElementById('btn__getValues') // hide
+			let btnDestroy     = document.getElementById('btn__destroy') // hide
+			let btnRestart     = document.getElementById('btn__restart') // hide
+			let btnClear       = document.getElementById('btn__clear1') // hide
+			let btnClearSingle = document.getElementById('btn__clear2') // hide
+			let btnClearMulti  = document.getElementById('btn__clear3') // hide
+			let btnSetValue    = document.getElementById('btn__set1') // hide
+			let btnSetMultiple = document.getElementById('btn__set2') // hide
+
+			const select3 = document.getElementById('select3');
+			const select4 = document.getElementById('select4');
+			new SSS(select3);
+			new SSS(select4);
+
+			btnGetValues.addEventListener('click', () => {
+				alert('select3: ' + JSON.stringify(select3.SSS.getValues(), null, 4) +
+					"\n\n" +
+					'select4: ' + JSON.stringify(select4.SSS.getValues(), null, 4) +
+					'');
+			});
+			btnSetValue.addEventListener('click', () => {
+				select3.SSS.setValue('And');
+				select4.SSS.setValue('And');
+			});
+			btnSetMultiple.addEventListener('click', () => {
+				select3.SSS.setValue(['And', 'Lup', 'Leo', 'Crv']);
+				select4.SSS.setValue(['And', 'Lup', 'Leo', 'Crv']);
+			});
+			btnClear.addEventListener('click', () => {
+				select3.SSS.clearValue();
+				select4.SSS.clearValue();
+			});
+			btnClearSingle.addEventListener('click', () => {
+				select3.SSS.clearValue('Lup');
+				select4.SSS.clearValue('Lup');
+			});
+			btnClearMulti.addEventListener('click', () => {
+				select3.SSS.clearValue(['Lup', 'Crv']);
+				select4.SSS.clearValue(['Lup', 'Crv']);
+			});
+			btnDestroy.addEventListener('click', () => {
+				document.querySelectorAll('.buttons_methods button').forEach(b => b.disabled = !b.disabled); // hide
+				select3.SSS.destroy();
+				select4.SSS.destroy();
+			});
+			btnRestart.addEventListener('click', () => {
+				document.querySelectorAll('.buttons_methods button').forEach(b => b.disabled = !b.disabled); // hide
+				new SSS(select3)
+				new SSS(select4)
+			});
+
+		</script>
+	</div>
+
+	<hr class="uk-divider-icon">
+
+	<div class="uk-card uk-card-default">
+		<div class="uk-card-header"><h3 class="uk-card-title">Ajax</h3></div>
+		<div class="uk-card-body">
+			<div class="uk-grid uk-child-width-1-2@s">
+
+				<form>
+					<label class="uk-form-label" for="select5">Single:</label>
+					<select class="uk-select" id="select5" name="product" required></select>
+					<button type="submit" class="uk-button uk-button-primary uk-margin-top">Submit</button>
+					Try to search <code>laptop</code>
+				</form>
+
+				<form>
+					<label class="uk-form-label" for="select6">Multiple:</label>
+					<select class="uk-input" id="select6" multiple name="product" required></select>
+					<button type="submit" class="uk-button uk-button-primary uk-margin-top">Submit</button>
+				</form>
+
+			</div>
+		</div>
+		<script type="module">
+			import {SSS} from '../SimpleSearchableSelect.min.js'; // hide
+			const select         = document.getElementById('select5'); // hide
+			const selectMultiple = document.getElementById('select6'); // hide
+			const SSSOptions     = {
+				promiseData : (search) => {
+					return fetch(`https://dummyjson.com/products/search?q=${search}`)
+						.then(res => res.json())
+						.then(json => {
+							let options = {};
+							json.products.forEach(product => {
+								options[product.id] = product.title;
+							});
+							return options;
+						})
+				}
+			};
+			new SSS(select, SSSOptions);
+			new SSS(selectMultiple, SSSOptions);
+
+		</script>
+	</div>
+	<footer>
+		<ul class="uk-navbar-nav">
+			<li><a href="https://chalda.it"><b>&lt;/&gt;</b> with <b>❤︎</b> by chalda</a></li>
+			<li><a href="https://github.com/chalda-pnuzig/SimpleSearchableSelect" class="nav-link px-2 text-body-secondary">documentation</a></li>
+			<li><a href="https://github.com/chalda-pnuzig/SimpleSearchableSelect" class="nav-link px-2 text-body-secondary">source</a></li>
+			<li><a href="https://github.com/chalda-pnuzig/SimpleSearchableSelect/blob/master/LICENSE" class="nav-link px-2 text-body-secondary">license</a></li>
+		</ul>
+	</footer>
+</div>
+
+<script>
+
+	document.querySelectorAll('.demo script').forEach(el => {
+		let s   = el.innerText
+			.replace(/^\t\t\t/mg, '')
+			.replace(/^.*\/\/ hide[\n\r]*/mg, '')
+			//.replace(/\{\s*\}/g, '')
+			.replace(/\s*$/g, '')
+			.replace(/^\s*/g, '')
+			.replace(/\t/g, '    ');
+		let pre = document.createElement('pre');
+		pre.classList.add('uk-margin', 'uk-text-warning', 'ul-margin-left', 'uk-background-secondary')
+		pre.innerText = s;
+		el.parentNode.appendChild(pre);
+	});
+
+	document.querySelectorAll('form').forEach(f => {
+		f.addEventListener('submit', e => {
+			e.preventDefault();
+			let data = {};
+
+			[...new FormData(f)].forEach(v => {
+				if (data[v[0]]) {
+					if (typeof data[v[0]] === 'string') data[v[0]] = [data[v[0]]];
+					data[v[0]].push(v[1])
+				} else {
+					data[v[0]] = v[1];
+				}
+			});
+			alert(JSON.stringify(data, null, 4));
+			return false;
+		});
+	});
+</script>
+</body>
+</html>

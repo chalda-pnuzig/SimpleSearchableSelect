@@ -1,0 +1,30 @@
+{
+    "name": "@chalda/simple-searchable-select",
+    "version": "1.0.0",
+    "description": "SimpleSearchableSelect is a javaScript library for search in select elements.",
+    "main": "SimpleSearchableSelect.min.js",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/chalda-pnuzig/SimpleSearchableSelect.git"
+    },
+    "author": "Chalda Pnuzig <chalda@chalda.it>",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/chalda-pnuzig/SimpleSearchableSelect/issues"
+    },
+    "homepage": "https://github.com/chalda-pnuzig/SimpleSearchableSelect#readme",
+    "keywords": [
+        "select",
+        "ui",
+        "form",
+        "input",
+        "control",
+        "autocomplete",
+        "tagging",
+        "tag"
+    ],
+    "funding": {
+        "type": "donate",
+        "url": "https://www.paypal.me/chaldapnuzig"
+    }
+}

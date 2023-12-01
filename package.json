@@ -1,6 +1,6 @@
 {
     "name": "@chalda/simple-searchable-select",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "SimpleSearchableSelect is a javaScript library for search in select elements.",
     "main": "SimpleSearchableSelect.min.js",
     "repository": {

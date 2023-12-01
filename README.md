@@ -4,9 +4,12 @@ SimpleSearchableSelect (SSS) is a lightweight JavaScript library that enhances s
 
 - **Requires No Additional CSS:**
     - SimpleSearchableSelect seamlessly integrates with your existing styles, utilizing the same classes as the original `<select>` element. This means you don't need to add extra CSS to achieve a consistent and cohesive look.
--
+
 - **No Framework Dependencies:**
     - SimpleSearchableSelect is a standalone library and does not rely on any external JavaScript frameworks. It's designed to be lightweight and easy to integrate into your projects without introducing unnecessary dependencies.
+
+- **Utilizes Native `datalist` Functionality:**
+    - The library harnesses the native browser `datalist` functionality to display suggestions, ensuring a familiar and standardized user experience across different platforms.
 
 Enjoy the enhanced selection capabilities without the need for extra styling or external frameworks.
 
@@ -22,11 +25,11 @@ Demo:
 - [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
-- [Options](#optios)
+- [Options](#options)
 - API
-    - [setValue()](#setvalue)
+    - [setValue()](#setvaluevalue-firechange--true)
     - [getValues()](#getvalues)
-    - [clearValue()](#clearvalue)
+    - [clearValue()](#clearvaluevalue--false)
     - [resetValue()](#resetvalue)
     - [destroy()](#destroy)
 

@@ -67,8 +67,9 @@ export class SSS {
 	 * @property {number}                [inputIntervalTimeout=200]     - Timeout in milliseconds for debouncing input events.
 	 * @property {string}                [idPrefix='SSS_']              - Prefix for generating unique element IDs.
 	 * @property {DOMInsertion}          [insertPosition='beforebegin'] - DOM insertion position for the input element.
-	 * @property {boolean}               [multiple=false]               - Indicates whether multiple selections are allowed. Defaults to the value of the select element.
-	 * @property {boolean}               [required=false]               - Indicates whether the input is required.  Defaults to the value of the select element.
+	 * @property {boolean}               [multiple=undefined]           - Indicates whether multiple selections are allowed. Defaults to the value of the select element.
+	 * @property {boolean}               [required=undefined]           - Indicates whether the input is required. Defaults to the value of the select element.
+	 * @property {string}                [placeholder=undefined]        - Indicates whether the input is required. Defaults to the value is derived from the option in the select element with an empty string ('') as its value
 	 * @property {number}                [swipeOffset=50]               - Threshold for swipe gestures.
 	 * @property {number}                [swipeAnimationSpeed=200]      - Speed of swipe animation in milliseconds.
 	 * @property {PromiseCallback|false} [promiseData=false]            - Asynchronous data fetching function or false if not used.
@@ -81,10 +82,9 @@ export class SSS {
 		swipeOffset          : 50,
 		swipeAnimationSpeed  : 200,
 		promiseData          : false,
-		// Note: multiple and required are intentionally left undefined here
-		// to indicate they will use the values from the input element.
-		multiple : undefined,
-		required : undefined,
+		multiple             : undefined, // Note: multiple and required are intentionally left undefined here
+		required             : undefined, // to indicate they will use the values from the input element,
+		placeholder          : undefined, // and placeholder is taken from the option in the select with an empty string ('') if present.
 	};
 
 	/**
@@ -353,9 +353,12 @@ export class SSS {
 				// Set the input placeholder if the option has no value
 				this.$input.placeholder = text;
 			}
-			// Map option value to text for reference
-
 		});
+
+		// Check if a custom placeholder is specified in the options
+		if (this.options.placeholder) {
+			this.$input.placeholder = this.options.placeholder;
+		}
 
 		// If there are selected options, set the values accordingly
 		if (selected.length) {

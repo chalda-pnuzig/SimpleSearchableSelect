@@ -150,7 +150,7 @@
 			const select3 = document.getElementById('select3');
 			const select4 = document.getElementById('select4');
 			new SSS(select3);
-			new SSS(select4);
+			new SSS(select4, {placeholder : 'Select one or more constellations...'});
 
 			btnGetValues.addEventListener('click', () => {
 				alert('select3: ' + JSON.stringify(select3.SSS.getValues(), null, 4) +

@@ -94,6 +94,9 @@ When creating an instance of SimpleSearchableSelect, you can customize its behav
 - **`required`** (default: same as select):
     - Indicates whether the input is required. If not specified, the value is derived from the original `<select>` element.
 
+- **`placeholder`** (default: option with empty string):
+    - Indicates the placeholder to show. If not specified, the value is derived from the option in the select element with an empty string ('') as its value
+
 - **`swipeOffset`** (default: `50`):
     - Threshold for swipe gestures. Determines the distance a swipe must cover to trigger removal of a multiple selection.
 

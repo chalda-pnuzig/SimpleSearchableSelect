@@ -438,9 +438,7 @@ export class SSS {
 						// If the value is valid, set it
 						this.setValue(this.#validValues[inputValue].value);
 					} else {
-						// Reset validValues, clear datalist, and fetch data from promiseData
-						this.#validValues          = {};
-						this.$dataList.textContent = '';
+						// Fetch data from promiseData
 						this.options.promiseData(inputValue).then((data) => {
 							Object.keys(data).forEach(key => {
 								let value = data[key];

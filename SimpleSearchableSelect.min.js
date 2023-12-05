@@ -1,7 +1,7 @@
 /**!
  * SSS (aka SimpleSearchableSelect aka SmartSelectSystem)
  *
- * @version   v1.0.2
+ * @version   v1.1.0
  * @author    Chalda Pnuzig <chalda＠chalda.it>
  * @copyright Chalda Pnuzig 2023
  * {@link     https://github.com/chalda-pnuzig/SimpleSearchableSelect|GitHub}

@@ -1,7 +1,7 @@
 /**!
  * SSS (aka SimpleSearchableSelect aka SmartSelectSystem)
  *
- * @version   v1.0.1
+ * @version   v1.0.2
  * @author    Chalda Pnuzig <chalda＠chalda.it>
  * @copyright Chalda Pnuzig 2023
  * {@link     https://github.com/chalda-pnuzig/SimpleSearchableSelect|GitHub}
@@ -69,7 +69,7 @@ export class SSS {
 	 * @property {DOMInsertion}          [insertPosition='beforebegin'] - DOM insertion position for the input element.
 	 * @property {boolean}               [multiple=undefined]           - Indicates whether multiple selections are allowed. Defaults to the value of the select element.
 	 * @property {boolean}               [required=undefined]           - Indicates whether the input is required. Defaults to the value of the select element.
-	 * @property {string}                [placeholder=undefined]        - Indicates whether the input is required. Defaults to the value is derived from the option in the select element with an empty string ('') as its value
+	 * @property {string}                [placeholder=undefined]        - Indicates the placeholder to show. Defaults to the value is derived from the option in the select element with an empty string ('') as its value
 	 * @property {number}                [swipeOffset=50]               - Threshold for swipe gestures.
 	 * @property {number}                [swipeAnimationSpeed=200]      - Speed of swipe animation in milliseconds.
 	 * @property {PromiseCallback|false} [promiseData=false]            - Asynchronous data fetching function or false if not used.

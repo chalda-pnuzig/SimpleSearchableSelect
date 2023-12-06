@@ -156,8 +156,10 @@ export function initDemo(preClasses = []) {
 					data[v[0]] = v[1];
 				}
 			});
+
 			alert(JSON.stringify(data, null, 4));
 			return false;
 		});
 	});
+
 }

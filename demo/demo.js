@@ -110,6 +110,32 @@ const demos = {
 		};
 		new SSS(selectAjax, SSSOptions);
 		new SSS(selectAjaxMultiple, SSSOptions);
+	},
+	selectOption        : () => {
+		new SSS(document.getElementById('selectSelectedOptionDefault'), {
+			// standard behavior
+			selectedStyle : false
+		});
+
+		// Bold text
+		new SSS(document.getElementById('selectSelectedOptionBold'), {
+			selectedStyle : (text) => text.split('').map(t => {
+				let c = t.codePointAt(0);
+				if (c >= 0x41 && c <= 0x5A) c = c + 0x1D468 - 0x41;
+				else if (c >= 0x61 && c <= 0x7A) c = c + 0x1D482 - 0x61;
+				return String.fromCodePoint(c)
+			}).join(''),
+		});
+
+		// Stroked text
+		new SSS(document.getElementById('selectSelectedOptionStroke'), {
+			selectedStyle : (text) => text.split('').map(t => t + String.fromCodePoint(0x335)).join(''),
+		});
+
+		// Arrow before text
+		new SSS(document.getElementById('selectSelectedOptionArrow'), {
+			selectedStyle : (text) => `   ▶ ${text}`,
+		});
 	}
 }
 
@@ -129,11 +155,13 @@ export function initDemo(preClasses = []) {
 			.replace(/^\s*/g, '')
 			.replace(/\t/g, '    ')
 			.replace(/[\u00A0-\u9999<>&]/g, i => '&#' + i.charCodeAt(0) + ';') // Encode HTML
-			.replace(/('|"|`)(.*?)\1/g, '<span style="color:#98c379">$1$2$1</span>') // String
+			.replace(/(['"`])(.*?)\1/g, '<span style="color:#98c379">$1$2$1</span>') // String
 			.replace(/\b([\w-]+)(\()/g, '<span style="color:#61aeee">$1</span>$2') // Functions
 			.replace(/\b([\w-]+)(\s*=\s|\s*:\s)/g, '<span style="color:#e6c07b">$1</span>$2') // variables/properties
-			.replace(/\s(\d+(\.\d+)?)\s/g, '<span style="color:#d19a66">$1</span>(') // numbers
+			.replace(/(\s\d+(\.\d+)?)\b/g, '<span style="color:#d19a66">$1</span>') // numbers
+			.replace(/\b(0x[\da-fA-F]+)\b/g, '<span style="color:#d19a66">$1</span>') // exa numbers
 			.replace(/(\$\{\w+})/g, '<span style="color:#e06c75">$1</span>') // variables in string
+			.replace(/^([ \t]*\/\/.*)/gm, '<span style="color:#999">$1</span>') // comments
 			.replace(/\b(abstract|arguments|await|boolean|break|byte|case|catch|char|class|const|continue|debugger|default|delete|do|double|else|enum|eval|export|extends|false|final|finally|float|for|function|goto|if|implements|import|in|instanceof|int|interface|let|long|native|new|null|package|private|protected|public|return|short|static|super|switch|synchronized|this|throw|throws|transient|true|try|typeof|var|void|volatile|while|with|yield)\b/g, '<span style="color:#c678dd">$1</span>')
 			.replace(/\b(AggregateError|Array|ArrayBuffer|AsyncFunction|AsyncGenerator|AsyncGeneratorFunction|AsyncIterator|Atomics|BigInt|BigInt64Array|BigUint64Array|Boolean|DataView|Date|decodeURI|decodeURIComponent|encodeURI|encodeURIComponent|Error|escapeDeprecated|eval|EvalError|FinalizationRegistry|Float32Array|Float64Array|Function|Generator|GeneratorFunction|globalThis|Infinity|Int16Array|Int32Array|Int8Array|InternalErrorNon-standard|Intl|isFinite|isNaN|Iterator|JSON|Map|Math|NaN|Number|Object|parseFloat|parseInt|Promise|Proxy|RangeError|ReferenceError|Reflect|RegExp|Set|SharedArrayBuffer|String|Symbol|SyntaxError|TypedArray|TypeError|Uint16Array|Uint32Array|Uint8Array|Uint8ClampedArray|undefined|unescapeDeprecated|URIError|WeakMap|WeakRef|WeakSet)\b/g, '<span style="color:#e6c07b">$1</span>')
 		;

@@ -106,7 +106,9 @@ When creating an instance of SimpleSearchableSelect, you can customize its behav
 - **`promiseData`** (default: `false`):
     - Asynchronous data fetching function or `false` if not used. If a function, it should return a Promise resolving to an object with 'key' and 'value' properties.
 
-These options allow you to tailor the behavior of SimpleSearchableSelect to suit your specific requirements.
+- **`selectedStyle`** (default: `false`):
+    - allows customization of the style or behavior of a selected option in datalist.
+      If `selectedStyle` is set to a function, this function will be invoked when styling a selected option. The function should accept the reference value of the selected option as an argument and return a string representing the customized style or behavior.
 
 ## `setValue(value, fireChange = true)`
 

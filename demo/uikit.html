@@ -12,7 +12,7 @@
 <body class="uk-background-muted">
 <nav class="uk-navbar-container">
 	<div class="uk-container">
-		<div uk-navbar>
+		<div class="uk-navbar">
 			<div class="uk-navbar-left">
 
 				<a class="uk-navbar-item uk-logo" href="#" aria-label="Back to Home">SimpleSearchableSelect - UiKit Demo</a>
@@ -29,7 +29,7 @@
 					<li>
 
 						<a title="chalda.it" href="https://chalda.it">
-							<svg width="36" height="36" version="1.1" viewBox="0 0 197.14 197.14" xmlns="http://www.w3.org/2000/svg">
+							<svg width="36" height="36" viewBox="0 0 197.14 197.14" xmlns="http://www.w3.org/2000/svg">
 								<circle transform="rotate(1.9244)" cx="36.894" cy="84.628" r="3.7881" fill="#00ff6a"/>
 								<g>
 									<path d="m184.01 150.22c0.00184-0.05487-0.09766-0.10518-0.22112-0.11171-8.3418-11.826-18.577-27.688-27.492-38.304-21.027 20.055-54.852 25.211-76.842 18.643-14.579 0.79949-27.137 2.4994-41.905 3.86 4.7787-6.2625 10.789-12.062 14.891-16.406-8.4002-5.794-19.444-13.675-26.8-19.883-5.5893-4.7413-14.144-12.555-14.141-12.916 12.06-5.9204 25.853-12.51 37.669-16.223 8.7476-2.5968 16.008-3.8511 24.529-4.238 6.824 0.20402 13.146 0.38248 18.986 1.5752 8.0855-4.708 14.888-9.3832 23.129-13.934 0.1319 0.00443 0.32935-0.03606 0.4388-0.08999 0.14991-0.0739 0.23421-0.06037 0.34185 0.05481-0.39109 7.7019-1.001 11.949-1.8514 21.745 15.554 10.127 30.311 21.515 41.688 34.363l0.27218-0.23457c12.952-13.659 23.52-28.79 31.347-40.693 1.5136-2.31 1.3994-2.2185 2.3519-1.8826 0.77162 0.27205 0.7958 0.38523 0.57618 2.697-1.6525 21.662-3.602 43.395-4.969 61.001-1.6049 20.719-1.6392 21.091-1.944 21.081-0.03138-0.00105-0.05556-0.04679-0.05371-0.10176zm-148.05-58.799c1.944-0.38984 3.6695-1.9362 4.2958-3.8497 0.87173-2.6635-0.8729-5.7756-3.7697-6.7243-1.6224-0.53136-3.6688-0.01995-5.0812 1.2698-1.289 1.1772-1.985 2.9565-1.7732 4.5334 0.2907 2.1644 1.9857 4.1022 4.1026 4.6903 0.77009 0.21395 1.4392 0.23812 2.2256 0.08078z" fill="#d200fc"/>
@@ -45,10 +45,20 @@
 	</div>
 </nav>
 
-<div class="uk-container demo">
+<div class="uk-container uk-margin-large-bottom">
+	<ul>
+		<li><a href="#_default_configuration">Default configuration</a></li>
+		<li><a href="#_default_configuration_multiple">Default configuration - multiple</a></li>
+		<li><a href="#_methods">Methods</a></li>
+		<li><a href="#_dynamic_data">Dynamic Data</a></li>
+		<li><a href="#_ajax">Ajax</a></li>
+		<li><a href="#_custom_selected_text">Custom selected text</a></li>
+	</ul>
+</div>
 
+<div class="uk-container demo">
 	<div class="uk-card uk-card-default">
-		<div class="uk-card-header"><h3 class="uk-card-title">Default configuration</h3></div>
+		<div class="uk-card-header"><h3 class="uk-card-title" id="_default_configuration">Default configuration</h3></div>
 		<div class="uk-card-body">
 			<div class="uk-grid uk-child-width-1-2@s">
 				<form action="#" onsubmit="return false">
@@ -113,14 +123,13 @@
 	<hr class="uk-divider-icon">
 
 	<div class="uk-card uk-card-default">
-		<div class="uk-card-header"><h3 class="uk-card-title">Default configuration - multiple</h3></div>
+		<div class="uk-card-header"><h3 class="uk-card-title" id="_default_configuration_multiple">Default configuration - multiple</h3></div>
 		<div class="uk-card-body">
 			<div class="uk-grid uk-child-width-1-2@s">
 				<div>
 					<form>
-						<label class="uk-form-label">Native:</label>
-
-						<select class="uk-select" name="character" required multiple>
+						<label class="uk-form-label" for="native2">Native:</label>
+						<select id="native2" class="uk-select" name="character" required multiple>
 							<option value="">Select a character...</option>
 							<option value="BenjaminFranklin">Benjamin Franklin</option>
 							<option value="BernardBernoulli">Bernard Bernoulli</option>
@@ -182,7 +191,7 @@
 	<hr class="uk-divider-icon">
 
 	<div class="uk-card uk-card-default">
-		<div class="uk-card-header"><h3 class="uk-card-title">Methods</h3></div>
+		<div class="uk-card-header"><h3 class="uk-card-title" id="_methods">Methods</h3></div>
 		<div class="uk-card-body">
 			<div class="uk-grid uk-child-width-1-2@s">
 
@@ -251,7 +260,7 @@
 	<hr class="uk-divider-icon">
 
 	<div class="uk-card uk-card-default">
-		<div class="uk-card-header"><h3 class="uk-card-title">Dynamic Data</h3></div>
+		<div class="uk-card-header"><h3 class="uk-card-title" id="_dynamic_data">Dynamic Data</h3></div>
 		<div class="uk-card-body">
 			<div class="uk-grid uk-child-width-1-2@s">
 
@@ -276,7 +285,7 @@
 	<hr class="uk-divider-icon">
 
 	<div class="uk-card uk-card-default">
-		<div class="uk-card-header"><h3 class="uk-card-title">Ajax</h3></div>
+		<div class="uk-card-header"><h3 class="uk-card-title" id="_ajax">Ajax</h3></div>
 		<div class="uk-card-body">
 			<div class="uk-grid uk-child-width-1-2@s">
 
@@ -296,6 +305,116 @@
 			</div>
 		</div>
 		<div id="ajaxData"></div>
+	</div>
+
+	<hr class="uk-divider-icon">
+
+	<div class="uk-card uk-card-default">
+		<div class="uk-card-header"><h3 class="uk-card-title" id="_custom_selected_text">Custom selected dataset text</h3></div>
+		<div class="uk-card-body">
+			<div class="uk-grid uk-child-width-1-2@s">
+
+				<form>
+					<div class="uk-margin-top">
+						<label class="uk-form-label" for="selectSelectedOptionDefault">Default (remove option):</label>
+						<select class="uk-select" id="selectSelectedOptionDefault" name="character" required multiple>
+							<option value="">Select a character...</option>
+							<option value="BenjaminFranklin">Benjamin Franklin</option>
+							<option selected value="BernardBernoulli">Bernard Bernoulli</option>
+							<option value="ChuckThePlant">Chuck the Plant</option>
+							<option value="CousinTed">Cousin Ted</option>
+							<option value="DrFredEdison">Dr. Fred Edison</option>
+							<option value="DrRedEdison">Dr. Red Edison</option>
+							<option value="GeorgeWashington">George Washington</option>
+							<option value="GreenTentacle">Green Tentacle</option>
+							<option selected value="Hoagie">Hoagie</option>
+							<option selected value="Laverne">Laverne</option>
+							<option value="NurseEdna">Nurse Edna</option>
+							<option value="PurpleTentacle">Purple Tentacle</option>
+							<option value="ThomasJefferson">Thomas Jefferson</option>
+							<option value="VedEdison">Ved Edison</option>
+							<option value="WeirdEdEdison">Weird Ed Edison</option>
+							<option value="ZedEdison">Zed Edison</option>
+							<option value="ZednaEdison">Zedna Edison</option>
+						</select>
+					</div>
+					<div class="uk-margin-top">
+						<label class="uk-form-label" for="selectSelectedOptionBold">Bold:</label>
+						<select class="uk-select" id="selectSelectedOptionBold" name="character" required multiple>
+							<option value="">Select a character...</option>
+							<option value="BenjaminFranklin">Benjamin Franklin</option>
+							<option selected value="BernardBernoulli">Bernard Bernoulli</option>
+							<option value="ChuckThePlant">Chuck the Plant</option>
+							<option value="CousinTed">Cousin Ted</option>
+							<option value="DrFredEdison">Dr. Fred Edison</option>
+							<option value="DrRedEdison">Dr. Red Edison</option>
+							<option value="GeorgeWashington">George Washington</option>
+							<option value="GreenTentacle">Green Tentacle</option>
+							<option selected value="Hoagie">Hoagie</option>
+							<option selected value="Laverne">Laverne</option>
+							<option value="NurseEdna">Nurse Edna</option>
+							<option value="PurpleTentacle">Purple Tentacle</option>
+							<option value="ThomasJefferson">Thomas Jefferson</option>
+							<option value="VedEdison">Ved Edison</option>
+							<option value="WeirdEdEdison">Weird Ed Edison</option>
+							<option value="ZedEdison">Zed Edison</option>
+							<option value="ZednaEdison">Zedna Edison</option>
+						</select>
+					</div>
+				</form>
+
+				<form>
+					<div class="uk-margin-top">
+						<label class="uk-form-label" for="selectSelectedOptionStroke">Stroke:</label>
+						<select class="uk-select" id="selectSelectedOptionStroke" name="character" required multiple>
+							<option value="">Select a character...</option>
+							<option value="BenjaminFranklin">Benjamin Franklin</option>
+							<option selected value="BernardBernoulli">Bernard Bernoulli</option>
+							<option value="ChuckThePlant">Chuck the Plant</option>
+							<option value="CousinTed">Cousin Ted</option>
+							<option value="DrFredEdison">Dr. Fred Edison</option>
+							<option value="DrRedEdison">Dr. Red Edison</option>
+							<option value="GeorgeWashington">George Washington</option>
+							<option value="GreenTentacle">Green Tentacle</option>
+							<option selected value="Hoagie">Hoagie</option>
+							<option selected value="Laverne">Laverne</option>
+							<option value="NurseEdna">Nurse Edna</option>
+							<option value="PurpleTentacle">Purple Tentacle</option>
+							<option value="ThomasJefferson">Thomas Jefferson</option>
+							<option value="VedEdison">Ved Edison</option>
+							<option value="WeirdEdEdison">Weird Ed Edison</option>
+							<option value="ZedEdison">Zed Edison</option>
+							<option value="ZednaEdison">Zedna Edison</option>
+						</select>
+					</div>
+					<div class="uk-margin-top">
+						<label class="uk-form-label" for="selectSelectedOptionArrow">Arrows:</label>
+						<select class="uk-select" id="selectSelectedOptionArrow" name="character" required multiple>
+							<option value="">Select a character...</option>
+							<option value="BenjaminFranklin">Benjamin Franklin</option>
+							<option selected value="BernardBernoulli">Bernard Bernoulli</option>
+							<option value="ChuckThePlant">Chuck the Plant</option>
+							<option value="CousinTed">Cousin Ted</option>
+							<option value="DrFredEdison">Dr. Fred Edison</option>
+							<option value="DrRedEdison">Dr. Red Edison</option>
+							<option value="GeorgeWashington">George Washington</option>
+							<option value="GreenTentacle">Green Tentacle</option>
+							<option selected value="Hoagie">Hoagie</option>
+							<option selected value="Laverne">Laverne</option>
+							<option value="NurseEdna">Nurse Edna</option>
+							<option value="PurpleTentacle">Purple Tentacle</option>
+							<option value="ThomasJefferson">Thomas Jefferson</option>
+							<option value="VedEdison">Ved Edison</option>
+							<option value="WeirdEdEdison">Weird Ed Edison</option>
+							<option value="ZedEdison">Zed Edison</option>
+							<option value="ZednaEdison">Zedna Edison</option>
+						</select>
+					</div>
+				</form>
+
+			</div>
+		</div>
+		<div id="selectOption"></div>
 	</div>
 </div>
 

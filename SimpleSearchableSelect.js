@@ -1,7 +1,7 @@
 /**!
  * SSS (aka SimpleSearchableSelect aka SmartSelectSystem)
  *
- * @version   v1.1.0
+ * @version   v1.2.0
  * @author    Chalda Pnuzig <chalda＠chalda.it>
  * @copyright Chalda Pnuzig 2023
  * {@link     https://github.com/chalda-pnuzig/SimpleSearchableSelect|GitHub}
@@ -61,20 +61,26 @@ export class SSS {
 	 */
 
 	/**
+	 * @typedef {function} SelectedStyleFn
+	 * @param {string} referenceValue - The  text associated with the selected option.
+	 * @returns {string} - The customized text for the selected option.
+	 */
+
+	/**
 	 * Configuration options for the SSS (Smart Select System) instance.
 	 *
 	 * @typedef {Object} SSSOptions
 	 * @property {number}                [inputIntervalTimeout=200]     - Timeout in milliseconds for debouncing input events.
 	 * @property {string}                [idPrefix='SSS_']              - Prefix for generating unique element IDs.
 	 * @property {DOMInsertion}          [insertPosition='beforebegin'] - DOM insertion position for the input element.
-	 * @property {boolean}               [multiple=undefined]           - Indicates whether multiple selections are allowed. Defaults to the value of the select element.
-	 * @property {boolean}               [required=undefined]           - Indicates whether the input is required. Defaults to the value of the select element.
-	 * @property {string}                [placeholder=undefined]        - Indicates the placeholder to show. Defaults to the value is derived from the option in the select element with an empty string ('') as its value
 	 * @property {number}                [swipeOffset=50]               - Threshold for swipe gestures.
 	 * @property {number}                [swipeAnimationSpeed=200]      - Speed of swipe animation in milliseconds.
 	 * @property {PromiseCallback|false} [promiseData=false]            - Asynchronous data fetching function or false if not used.
-	 *
-	 */
+	 * @property {false|SelectedStyleFn} [selectedStyle=false]          - If a function is provided, it will be invoked with the reference value of the selected option. If set to `false`, selected options will be disabled.
+	 * @property {boolean}               [multiple=undefined]           - Indicates whether multiple selections are allowed. Defaults to the value of the select element.
+	 * @property {boolean}               [required=undefined]           - Indicates whether the input is required. Defaults to the value of the select element.
+	 * @property {string}                [placeholder=undefined]        - Indicates the placeholder to show. Defaults to the value is derived from the option in the select element with an empty string ('') as its value
+	 **/
 	options = {
 		inputIntervalTimeout : 200,
 		idPrefix             : 'SSS_',
@@ -82,6 +88,7 @@ export class SSS {
 		swipeOffset          : 50,
 		swipeAnimationSpeed  : 200,
 		promiseData          : false,
+		selectedStyle        : false,
 		multiple             : undefined, // Note: multiple and required are intentionally left undefined here
 		required             : undefined, // to indicate they will use the values from the input element,
 		placeholder          : undefined, // and placeholder is taken from the option in the select with an empty string ('') if present.
@@ -113,15 +120,22 @@ export class SSS {
 	#validValues = {};
 
 	/**
+	 * @type {Object.<string, HTMLOptionElement>}
+	 * @private
+	 */
+	#datalistOptions = {};
+
+	/**
 	 * Initializes a new instance of the SSS class, associating it with a target element and providing optional configuration options.
 	 * If the target element already has an SSS instance, returns the existing instance.
 	 *
-	 * @param {HTMLSelectElement} target - The target element to associate with the SSS instance.
+	 * @param {HTMLSelectElement} target - The target select element to associate with the SSS instance.
 	 * @param {SSSOptions} options - Optional configuration options for the SSS instance.
 	 * @returns {SSS} - The SSS instance associated with the target element.
 	 */
 
 	constructor(target, options = {}) {
+		if (!target) throw new Error(`SSS: Target select not found!`)
 		if (target.hasOwnProperty('SSS')) return target.SSS;
 		this.$target          = target;
 		this.$target["SSS"]   = this;
@@ -190,6 +204,12 @@ export class SSS {
 					this.$input.required = Object.keys(this.#clones).length === 0;
 				}
 
+				// Restores the option to an enabled state by setting the 'disabled' property to false.
+				this.#datalistOptions[value].disabled = false;
+
+				// resets the option text to its original value.
+				this.#datalistOptions[value].text = this.#datalistOptions[value].dataset.original;
+
 				// Trigger 'change' event if specified
 				if (fireChange) this.$target.dispatchEvent(new Event('change'));
 			}, this.options.swipeAnimationSpeed);
@@ -234,6 +254,22 @@ export class SSS {
 		// Reset the input value and remove 'required' attribute
 		this.$input.value    = '';
 		this.$input.required = false;
+
+		if (typeof this.options.selectedStyle === 'function') {
+			// Apply custom styling to the option text using the selectedStyle function.
+			this.#datalistOptions[value].text = this.options.selectedStyle(this.#refs[value]) + '⁣';
+		} else {
+			// Disable the option if selectedStyle is not a function.
+			this.#datalistOptions[value].disabled = true;
+		}
+
+
+		if (this.options.showPicker) {
+			try {
+				this.$input.showPicker();
+			} catch (e) {
+			}
+		}
 
 		// Update selected status for valid values
 		const cloneKeys = Object.keys(this.#clones);
@@ -347,8 +383,10 @@ export class SSS {
 				// Create a new Option element and add it to the internal data list
 				let newOption = new Option(text);
 				this.$dataList.append(newOption);
-				this.#validValues[text] = o;
-				this.#refs[value]       = text;
+				newOption.dataset.original   = text;
+				this.#datalistOptions[value] = newOption;
+				this.#validValues[text]      = o;
+				this.#refs[value]            = text;
 			} else {
 				// Set the input placeholder if the option has no value
 				this.$input.placeholder = text;
@@ -428,11 +466,20 @@ export class SSS {
 		// Event listeners for input handling
 		let start = false;
 		this.$input.addEventListener('input', () => {
+
 			// Clear any existing timeout to debounce input
 			if (start) clearTimeout(start)
 
 			// Get the current input value
 			let inputValue = this.$input.value;
+
+			// Controlla se il valore è uno di quelli generati
+
+			let sel = Object.values(this.#datalistOptions).filter(t => t.text === inputValue);
+			if (sel.length === 1) {
+				inputValue = sel[0].dataset.original
+			}
+
 
 			if (this.options.promiseData) {
 				// Handle logic when promiseData is present
@@ -450,8 +497,10 @@ export class SSS {
 									let option               = new Option(value, key);
 									this.#validValues[value] = option;
 									this.$target.append(option);
-									this.#refs[key]    = value;
-									let dataListOption = new Option(value);
+									this.#refs[key]                 = value;
+									let dataListOption              = new Option(value);
+									dataListOption.dataset.original = value;
+									this.#datalistOptions[key]      = dataListOption;
 									this.$dataList.append(dataListOption);
 								}
 							});
@@ -483,6 +532,17 @@ export class SSS {
 				this.setValue('');
 			}
 		});
+
+		// Handle focus event
+		if (this.options.showPickerOnFocus) {
+			this.$input.addEventListener('focus', () => {
+				// Show the picker
+				try {
+					this.$input.showPicker();
+				} catch (e) {
+				}
+			});
+		}
 
 		// Handle keydown events (Backspace, Delete, Tab, Enter)
 		this.$input.addEventListener('keydown', (e) => {

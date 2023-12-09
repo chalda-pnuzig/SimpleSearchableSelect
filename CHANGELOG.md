@@ -3,6 +3,12 @@ Lock Changelog
 
 (all changes without author notice are by [@chalda-pnuzig](https://github.com/chalda-pnuzig))
 
+## 1.2.0 (2023-12-09)
+
+### Features
+
+- Introduces the ability to specify a custom text for selected options in datalist (`selectedStyle`).
+
 ## 1.1.0 (2023-12-05)
 
 ### Features
